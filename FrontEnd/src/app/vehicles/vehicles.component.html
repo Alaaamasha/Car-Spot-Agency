@@ -1,0 +1,71 @@
+<div *ngIf="!detailsMode">
+    <mat-toolbar color="primary" class="toolbar">
+        <div>
+            <span> Vehicles List</span>
+        </div>
+        <div>
+            <button mat-button (click)="openLoginPage()">
+                <mat-icon>admin_panel_settings</mat-icon>
+            </button>
+            <button (click)="OpenFiltersDialog()" mat-button>
+                <mat-icon>tune</mat-icon>
+            </button>
+            <mat-label class="srtbylabel" >Sort By</mat-label>
+            <mat-form-field >
+                <mat-select (selectionChange)="sort(sort_by)" [(value)]="sort_by" >
+                    <mat-option value = "by_year">Year</mat-option>
+                    <mat-option value = "by_price">Price</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </mat-toolbar>
+
+
+    <mat-tab-group [selectedIndex]="(typeView == 'list')?0:1"  (selectedTabChange)="changeView($event)" mat-stretch-tabs>
+        <mat-tab value="List">
+            <ng-template mat-tab-label>
+                List
+                <mat-icon>list</mat-icon>
+            </ng-template>
+        </mat-tab>
+        <mat-tab value="Tiles">
+            <ng-template mat-tab-label>
+                Tiles
+                <mat-icon>view_module</mat-icon>
+            </ng-template>
+        </mat-tab>
+    </mat-tab-group>
+
+    <div  class="centering" *ngIf="filter && viewedVehicles.length >0">
+        <mat-label>Filtered by {{filter}}</mat-label>
+        <mat-divider></mat-divider>
+    </div>
+        <div [ngClass] ="(typeView=='list')?'ListView':'TilesView'">
+          <mat-card *ngFor = "let vehicle of viewedVehicles"  > 
+              <mat-card-header class="header">
+                  <div class="first">
+                      <mat-card-title>{{ vehicle.brand | uppercase}}</mat-card-title>
+                      <button (click)="openVehicleDetails(vehicle)"  mat-button>
+                        <mat-icon>info</mat-icon>
+                      </button>
+                  </div>
+                  <div>
+                      <mat-card-subtitle>{{ vehicle.model }}</mat-card-subtitle>  
+                      <mat-card-subtitle>{{ vehicle.type  }}</mat-card-subtitle>
+                      <mat-card-subtitle>{{ vehicle.year  }}</mat-card-subtitle> 
+                  </div>
+            </mat-card-header>
+            <mat-card-footer >
+                <div class="centering">
+                    <button (click)="openVehicleDetails(vehicle)" mat-button>Details</button>
+                </div>
+            </mat-card-footer>
+            </mat-card>
+        </div>
+        <div *ngIf="viewedVehicles.length == 0 && filter" class="centering">
+            <h1>There is no Vehicles according to your Filter</h1>
+        </div>
+   
+</div>
+
+<app-vehicle-details (backEvent)="backEvent()" [vehicle]="selctedVehicle" *ngIf="detailsMode"></app-vehicle-details>

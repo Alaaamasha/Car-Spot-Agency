@@ -1,0 +1,22 @@
+.header{
+    display: flex !important;
+    flex-direction: column;
+}
+
+.first{
+    display: flex;
+    justify-content: space-between;
+}
+
+.border{
+    border: 1px solid;
+}
+
+.saveBtn{
+    background: #4CAF50; 
+    border-radius: 15px;
+}
+
+mat-form-field{
+ margin: 5px;   
+}

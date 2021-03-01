@@ -1,0 +1,33 @@
+.ListView{
+        display : flex;
+        flex-direction : column;
+}
+
+
+
+.header{
+    display: flex !important;
+    flex-direction: column;
+}
+
+.first{
+    display: flex;
+    justify-content: space-between;
+}
+
+.tab-icon{
+    margin-right: 8px;
+}
+
+.srtbylabel{
+    padding-right: 10px;
+}
+
+.TilesView{
+        display : flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        >mat-card{
+            width: 25%;
+        }
+}       

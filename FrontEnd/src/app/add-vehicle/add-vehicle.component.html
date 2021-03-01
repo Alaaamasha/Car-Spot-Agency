@@ -1,0 +1,33 @@
+<div class="example-container">
+    <form [formGroup]="vehcileDetailsFrm" (ngSubmit)="onSubmit()" >
+        <mat-form-field appearance="fill">
+            <mat-label>Type</mat-label>
+            <input [(ngModel)]="updatedVehicle.type" formControlName="type" required type="text" matInput>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Brand</mat-label>
+            <input [(ngModel)]="updatedVehicle.brand" formControlName="brand" required  type="text" matInput>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Model</mat-label>
+            <input [(ngModel)]="updatedVehicle.model" formControlName="model" required type="text" matInput>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Year</mat-label>
+            <input [(ngModel)]="updatedVehicle.year" formControlName="year" required minlength="4" type="number" matInput>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Price</mat-label>
+            <input [(ngModel)]="updatedVehicle.price" formControlName="price" required minlength="2" type="number" matInput>
+        </mat-form-field>
+        <br>
+        <div class="toolbar">
+            <button mat-raised-button color="primary">{{ mode }}</button>
+            <button mat-raised-button mat-dialog-close color="warn" (click)="dialogRef.close()" >Cancel</button>
+        </div>
+    </form>
+</div>

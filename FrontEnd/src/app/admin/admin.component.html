@@ -1,0 +1,47 @@
+<div>
+  <mat-toolbar color="primary" class="toolbar">
+    <div class = "centering">
+        <h1>Admin Page</h1>
+    </div>
+    <div>
+      <button (click)="addVehicle()" class="border" mat-button>
+        <mat-icon>add</mat-icon>
+        Add Vehicle
+      </button>
+      <button (click)="signOut()" mat-button>
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+    </div>
+ </mat-toolbar>
+    <div *ngIf="!expand">
+      <div class="centering">
+        <mat-spinner *ngIf="loader" ></mat-spinner> 
+      </div>
+        <mat-card *ngFor = "let vehicle of allVehicles"  > 
+          <div>
+            <mat-card-header class="header">
+              <div class="first">
+                <mat-card-title>{{ vehicle.brand | uppercase}}</mat-card-title>
+                <div>
+                  <button (click)="editVehicle(vehicle)" color="danger" mat-button>
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                  <button (click)="deleteVehicle(vehicle)" color="danger" mat-button>
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <mat-card-subtitle>{{ vehicle.model }}</mat-card-subtitle>  
+                <mat-card-subtitle>{{ vehicle.type  }}</mat-card-subtitle>
+                <mat-card-subtitle>{{ vehicle.year  }}</mat-card-subtitle> 
+                <mat-card-subtitle>{{ vehicle.publish_date | date:'dd/MM/yyyy'  }}</mat-card-subtitle> 
+              </div>
+          </mat-card-header>
+          <mat-card-footer >
+          </mat-card-footer>
+        </div>
+        </mat-card>
+      </div>
+</div>

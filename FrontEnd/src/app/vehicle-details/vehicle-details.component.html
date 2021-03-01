@@ -1,0 +1,32 @@
+<div>
+    <mat-list>
+            <mat-list-item>
+                <strong>Type</strong> : {{vehicle.type}}
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <strong>Brand</strong> : {{vehicle.brand}}
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <strong>Model</strong> : {{vehicle.model}}
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <strong>Year</strong> : {{vehicle.year}}
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <strong>Price</strong> : {{vehicle.price |  currency:'ILS' : 'symbol' : '1.0-0' }}
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <strong>Publish Date</strong> : {{vehicle.publish_date | date:'dd/MM/yyyy'}}
+            </mat-list-item>
+            <mat-divider></mat-divider>
+    </mat-list>
+
+    <div color="primary" class="centering">
+        <button (click)="backToVehicles()" mat-button >Back to All Vehicles</button>
+    </div>
+</div>
